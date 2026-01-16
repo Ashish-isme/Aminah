@@ -23,7 +23,7 @@ export default function Header() {
                 border: "1px solid rgba(47, 90, 85, 0.25)",
               }}
             />
-            <span style={{ fontWeight: 650 }}>Haseeb</span>
+            <span style={{ fontWeight: 650 }}>Aminah</span>
           </div>
 
           <nav
