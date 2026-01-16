@@ -74,7 +74,7 @@ export default function FeatureShowcase() {
                 }}
               />
               <div style={{ position: "absolute", inset: 40 }}>
-                <div className="pill">Haseeb Chat</div>
+                <div className="pill">Aminah Chat</div>
                 <div style={{ marginTop: 14, fontWeight: 800 }}>
                   Weekly Summary
                 </div>
@@ -113,7 +113,7 @@ export default function FeatureShowcase() {
           </h3>
           <p style={{ marginTop: 8, maxWidth: 760, marginInline: "auto" }}>
             Most money tools make your work harder. We make your money make sense.
-            Haseeb turns your receipts, expenses, and habits into clarity, calm, and action.
+            Aminah turns your receipts, expenses, and habits into clarity, calm, and action.
           </p>
         </div>
 
