@@ -40,7 +40,7 @@ function Price({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontSize: 30,
+        fontSize: 24,
         fontWeight: 600,
         letterSpacing: "-0.02em",
         lineHeight: 1.1,
@@ -58,9 +58,9 @@ export default function Pricing() {
       <Container>
         {/* Header */}
         <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
-          <div className="kicker">Pricing</div>
+          <div className="kicker" style={{ color: "#25c753" }}>Pricing</div>
           <h2 className="title" style={{ marginTop: 10 }}>
-            Clear Pricing That Feels Fair
+            Clear <span style={{ color: "#25c753" }}>Pricing</span> That Feels Fair
           </h2>
           <p style={{ marginTop: 10 }}>
             Pick a plan that fits your life and your budget.
@@ -69,6 +69,7 @@ export default function Pricing() {
 
         {/* Cards row */}
         <div
+          className="pricing-row"
           style={{
             display: "flex",
             gap: 16,
@@ -83,6 +84,9 @@ export default function Pricing() {
               flex: 1,
               padding: 22,
               background: "rgba(255,255,255,0.62)",
+              borderRadius: 12,
+              animation: 'slideUp 0.6s ease-out',
+              minHeight: 380,
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -90,7 +94,7 @@ export default function Pricing() {
                 <Sparkles size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
                   Starter
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -122,23 +126,28 @@ export default function Pricing() {
             style={{
               flex: 1,
               padding: 22,
-              borderColor: "rgba(47, 90, 85, 0.25)",
-              background:
-                "linear-gradient(180deg, rgba(47,90,85,0.08), rgba(255,255,255,0.60))",
-              boxShadow: "0 18px 45px rgba(47, 90, 85, 0.10)",
+              background: "rgba(255,255,255,0.62)",
+              borderRadius: 12,
+              animation: 'slideUp 0.6s ease-out',
+              minHeight: 380,
               position: "relative",
             }}
           >
             <div
-              className="pill"
               style={{
-                width: "fit-content",
-                borderColor: "rgba(47, 90, 85, 0.25)",
-                background: "rgba(47,90,85,0.10)",
-                color: "rgba(29,27,22,0.72)",
+                position: "absolute",
+                top: -10,
+                right: -10,
+                background: "#25c753",
+                color: "white",
+                padding: "4px 8px",
+                fontSize: 12,
+                fontWeight: 600,
+                borderRadius: "4px 0 4px 0",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
               }}
             >
-              Most Popular
+              Best Value
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 12 }}>
@@ -146,7 +155,7 @@ export default function Pricing() {
                 <Leaf size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
                   Plus
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -168,7 +177,7 @@ export default function Pricing() {
             </div>
 
             <div style={{ marginTop: 18 }}>
-              <a className="btn btn-primary" href="#get-started" style={{ width: "100%" }}>
+              <a className="btn btn-ghost" href="#get-started" style={{ width: "100%" }}>
                 Start Your Trial — Free
               </a>
             </div>
@@ -181,6 +190,9 @@ export default function Pricing() {
               flex: 1,
               padding: 22,
               background: "rgba(255,255,255,0.62)",
+              borderRadius: 12,
+              animation: 'slideUp 0.6s ease-out',
+              minHeight: 380,
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -188,7 +200,7 @@ export default function Pricing() {
                 <Users size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
                   Family
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -236,6 +248,28 @@ export default function Pricing() {
             #pricing .pricing-row {
               flex-direction: column;
             }
+          }
+          @keyframes slideUp {
+            from {
+              transform: translateY(20px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+          .btn:hover {
+            background-color: #25c753 !important;
+            color: white !important;
+          }
+          .card {
+            transition: all 0.3s ease;
+          }
+          .card:hover {
+            background: rgba(37, 199, 83, 0.1);
+            box-shadow: 0 0 15px rgba(37, 199, 83, 0.3);
+            transform: translateY(-5px) scale(1.02);
           }
         `}</style>
       </Container>
