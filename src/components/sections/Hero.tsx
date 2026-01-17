@@ -62,7 +62,7 @@ export default function Hero() {
 
           <h1 className="title-lg hero-title" style={{ marginBottom: 14 }}>
             Ready to feel in control <br />
-            of your money again?
+            of your <span style={{ color: "var(--brand)" }}>money again?</span>
           </h1>
 
           <p className="hero-subtitle" style={{ marginBottom: 28 }}>
