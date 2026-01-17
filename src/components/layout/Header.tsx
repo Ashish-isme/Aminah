@@ -7,11 +7,11 @@ export default function Header() {
   return (
     <header
       style={{
-        padding: "18px 0",
+        padding: "12px 0", // Slightly reduced vertical padding to accommodate larger logo
         position: "fixed",
         width: "100%",
         top: 0,
-        zIndex: 100, // Increased z-index so menu sits above content
+        zIndex: 100,
         backgroundColor: "rgba(255, 255, 255, 0.45)",
         backdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
@@ -27,22 +27,22 @@ export default function Header() {
             gap: 14,
           }}
         >
-          {/* Logo */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10, zIndex: 101 }}>
-            <div
-              aria-hidden
+          {/* Logo Section */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, zIndex: 101 }}>
+            <img
+              src="/src/assets/logo.png" /* Ensure logo.png is in your public folder */
+              alt="Aminah Logo"
               style={{
-                width: 28,
-                height: 28,
-                borderRadius: 10,
-                background: "rgba(47, 90, 85, 0.12)",
-                border: "1px solid rgba(47, 90, 85, 0.25)",
+                width: 48,  /* Increased from 28px to 48px */
+                height: 48, /* Increased from 28px to 48px */
+                borderRadius: 12,
+                objectFit: "cover",
               }}
             />
-            <span style={{ fontWeight: 650 }}>Aminah</span>
+            <span style={{ fontWeight: 550, fontSize: "22px", color: "var(--brand)" }}>Aminah</span>
           </div>
 
-          {/* Desktop Nav - Hidden on mobile via CSS */}
+          {/* Desktop Nav */}
           <nav className="nav-desktop small">
             <a href="#product">Product</a>
             <a href="#pricing">Pricing</a>
@@ -84,10 +84,8 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              // Close Icon
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             ) : (
-              // Hamburger Icon
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             )}
           </button>
