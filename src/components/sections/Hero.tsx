@@ -35,14 +35,14 @@ export default function Hero() {
         <div aria-hidden className="hero-glow hero-glow--a" />
         <div aria-hidden className="hero-glow hero-glow--b" />
 
-        {/* Readability overlay */}
+        {/* Readability overlay - Balanced: Clear text center, visible image edges */}
         <div
           aria-hidden
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse at center, rgba(255,255,255,0.95) 10%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0.4) 80%, rgba(255,255,255,0.1) 100%)",
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.92) 15%, rgba(255,255,255,0.82) 45%, rgba(255,255,255,0.55) 80%, rgba(255,255,255,0.2) 100%)",
           }}
         />
 
@@ -102,7 +102,7 @@ export default function Hero() {
             font-size: clamp(42px, 5.5vw, 76px); 
             line-height: 1.05;
             letter-spacing: -0.03em;
-            text-shadow: 0 20px 40px rgba(255,255,255,0.8);
+            text-shadow: 0 20px 40px rgba(255,255,255,0.9);
             animation: heroFadeUp 700ms both;
             animation-delay: 160ms;
           }
