@@ -38,17 +38,10 @@ export default function Steps() {
   return (
     <section id="product" className="section">
       <Container>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: 18,
-            alignItems: "center",
-          }}
-        >
+        <div className="steps-grid">
           {/* LEFT */}
           <div>
-            <h2 className="title" style={{ fontSize: 36 }}>
+            <h2 className="title">
               Get Clarity in 3 Easy Steps
             </h2>
             <p style={{ marginTop: 10 }}>
@@ -63,7 +56,7 @@ export default function Steps() {
               />
               <Step
                 n="2"
-                title="Haseeb Organizes It"
+                title="Aminah Organizes It"
                 text="AI + smart rules sort everything into clean categories."
               />
               <Step
@@ -76,7 +69,7 @@ export default function Steps() {
 
           {/* RIGHT (replaces your placeholder) */}
           <div style={{ display: "grid", placeItems: "center" }}>
-            <IPhoneMockup screen={stepsScreen} alt="Haseeb app screen" scale={1} />
+            <IPhoneMockup screen={stepsScreen} alt="Aminah app screen" scale={1} />
           </div>
         </div>
       </Container>

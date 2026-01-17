@@ -17,16 +17,9 @@ export default function FeatureShowcase() {
               "linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48))",
           }}
         >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1.05fr 0.95fr",
-              gap: 18,
-              alignItems: "center",
-            }}
-          >
+          <div className="feature-main-grid">
             <div>
-              <h2 className="title" style={{ fontSize: 40, lineHeight: 1.05 }}>
+              <h2 className="title-xl">
                 Money Awareness <br />
                 That Feels <span style={{ color: "var(--brand)" }}>Good.</span>
               </h2>
@@ -53,7 +46,7 @@ export default function FeatureShowcase() {
             </div>
 
             <div
-              className="card"
+              className="card feature-mockup"
               style={{
                 height: 420,
                 borderRadius: 28,
@@ -108,7 +101,7 @@ export default function FeatureShowcase() {
         </div>
 
         <div style={{ textAlign: "center", marginTop: 28 }}>
-          <h3 className="title" style={{ fontSize: 24 }}>
+          <h3 className="title">
             You Don’t Track Money. You Live Well.
           </h3>
           <p style={{ marginTop: 8, maxWidth: 760, marginInline: "auto" }}>

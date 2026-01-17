@@ -4,7 +4,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: 'Poppins', sans-serif;
   color: var(--text);
   background: radial-gradient(1200px 600px at 50% -100px, #ffffff 0%, var(--bg) 60%);
 }
@@ -30,8 +30,53 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 }
 
 .title {
-  font-family: var(--font-serif);
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.title-lg {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1.1;
+}
+
+.feature-main-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.feature-mockup {
+  height: 420px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.quote {
+  font-size: 28px;
+  opacity: 0.35;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 18px;
+}
+
+.title-xl {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.05;
 }
 
 .btn {
@@ -78,7 +123,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 .card {
   background: var(--surface-2);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  /* border-radius: var(--radius); */
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(8px);
 }
@@ -93,15 +138,70 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   color: var(--muted);
 }
 
-.muted { color: var(--muted); }
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 @media (max-width: 920px) {
   .grid-3 { grid-template-columns: 1fr; }
   .section { padding: 54px 0; }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .title-lg {
+    font-size: 32px;
+  }
+  .title-md {
+    font-size: 24px;
+  }
+  .title-xl {
+    font-size: 32px;
+  }
+  .feature-main-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  .section {
+    padding: 36px 0;
+  }
+  .btn {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+  header {
+    padding: 12px 0;
+  }
+  header nav {
+    gap: 12px;
+  }
+  .quote {
+    font-size: 24px;
+  }
+  footer {
+    padding: 36px 0 24px;
+  }
 }

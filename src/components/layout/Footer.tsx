@@ -5,13 +5,7 @@ export default function Footer() {
     <footer style={{ padding: "54px 0 36px" }}>
       <Container>
         <div className="divider" style={{ marginBottom: 28 }} />
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 1fr 1fr",
-            gap: 18,
-          }}
-        >
+        <div className="footer-grid">
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div
@@ -24,7 +18,7 @@ export default function Footer() {
                   border: "1px solid rgba(47, 90, 85, 0.25)",
                 }}
               />
-              <span style={{ fontWeight: 650 }}>Haseeb</span>
+              <span style={{ fontWeight: 650 }}>Aminah</span>
             </div>
             <p style={{ marginTop: 10, maxWidth: 420 }}>
               The personal finance app for Kuwait. Capture, categorize, and understand your everyday spending — automatically.
@@ -49,7 +43,7 @@ export default function Footer() {
           <div id="company">
             <div className="kicker">Company</div>
             <div style={{ display: "grid", gap: 10, marginTop: 12 }} className="small">
-              <a href="#company">Why Haseeb</a>
+              <a href="#company">Why Aminah</a>
               <a href="#privacy">Privacy Policy</a>
               <a href="#">Home</a>
             </div>
@@ -57,7 +51,7 @@ export default function Footer() {
         </div>
 
         <div style={{ marginTop: 26 }} className="small muted">
-          © {new Date().getFullYear()} Haseeb. All rights reserved.
+          © {new Date().getFullYear()} Aminah. All rights reserved.
         </div>
       </Container>
     </footer>
