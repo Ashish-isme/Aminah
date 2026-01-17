@@ -3,20 +3,31 @@ export default function Hero() {
     <section
       id="get-started"
       className="section"
-      style={{ paddingTop: 48, paddingBottom: 72 }}
+      style={{
+        paddingTop: 0,
+        paddingBottom: 0,
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <div
         className="card hero-card"
         style={{
           position: "relative",
           overflow: "hidden",
-          padding: "88px 24px 64px",
+          padding: "48px 24px",
+          width: "100%",
+          height: "100%",
           backgroundImage: "url('/src/assets/Hero_Section_Image.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           border: "1px solid rgba(0,0,0,0.08)",
-          boxShadow:
-            "0 24px 70px rgba(0,0,0,0.14), 0 8px 18px rgba(0,0,0,0.08)",
+          boxShadow: "0 24px 70px rgba(0,0,0,0.14), 0 8px 18px rgba(0,0,0,0.08)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         {/* Animated background glow */}
@@ -209,7 +220,7 @@ export default function Hero() {
 
           @media (max-width: 720px) {
             .hero-subtitle { font-size: 16px; }
-            .hero-card { padding: 72px 18px 56px !important; }
+            .hero-card { padding: 48px 18px !important; }
           }
 
           @media (prefers-reduced-motion: reduce) {
@@ -221,5 +232,5 @@ export default function Hero() {
         `}</style>
       </div>
     </section>
-  );
+  )
 }
