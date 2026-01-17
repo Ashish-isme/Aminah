@@ -58,9 +58,9 @@ export default function Pricing() {
       <Container>
         {/* Header */}
         <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
-          <div className="kicker" style={{ color: "#25c753" }}>Pricing</div>
+          <div className="kicker" style={{ color: "var(--brand)" }}>Pricing</div>
           <h2 className="title" style={{ marginTop: 10 }}>
-            Clear <span style={{ color: "#25c753" }}>Pricing</span> That Feels Fair
+            Clear <span style={{ color: "var(--brand)" }}>Pricing</span> That Feels Fair
           </h2>
           <p style={{ marginTop: 10 }}>
             Pick a plan that fits your life and your budget.
@@ -94,7 +94,7 @@ export default function Pricing() {
                 <Sparkles size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "var(--brand)" }}>
                   Starter
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -138,7 +138,7 @@ export default function Pricing() {
                 position: "absolute",
                 top: -10,
                 right: -10,
-                background: "#25c753",
+                background: "var(--brand)",
                 color: "white",
                 padding: "4px 8px",
                 fontSize: 12,
@@ -155,7 +155,7 @@ export default function Pricing() {
                 <Leaf size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "var(--brand)" }}>
                   Plus
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -200,7 +200,7 @@ export default function Pricing() {
                 <Users size={18} />
               </PlanIcon>
               <div>
-                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "#25c753" }}>
+                <div style={{ fontWeight: 600, letterSpacing: "-0.01em", color: "var(--brand)" }}>
                   Family
                 </div>
                 <div className="small" style={{ marginTop: 2 }}>
@@ -260,7 +260,7 @@ export default function Pricing() {
             }
           }
           .btn:hover {
-            background-color: #25c753 !important;
+            background-color: var(--brand) !important;
             color: white !important;
           }
           .card {
