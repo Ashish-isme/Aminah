@@ -1,78 +1,83 @@
-// src/components/sections/Steps.tsx
-import Container from "../layout/container";
-import IPhoneMockup from "../ui/PhoneMockup/PhoneMockup";
-import stepsScreen from "../../assets/app-screen.png";
+import { useMemo } from "react";
+import aminahChat from "../../assets/3-steps.png"; 
 
-function Step({ n, title, text }: { n: string; title: string; text: string }) {
+type StepData = {
+  number: number;
+  title: string;
+  description: string;
+};
+
+function StepItem({ number, title, description }: StepData) {
   return (
-    <div className="card" style={{ padding: 16, display: "flex", gap: 12 }}>
-      <div
-        aria-hidden
-        style={{
-          width: 30,
-          height: 30,
-          borderRadius: 999,
-          background: "rgba(47, 90, 85, 0.12)",
-          border: "1px solid rgba(47, 90, 85, 0.25)",
-          display: "grid",
-          placeItems: "center",
-          fontWeight: 700,
-          color: "var(--brand)",
-          flex: "0 0 auto",
-        }}
-      >
-        {n}
+    <div className="hw-stepCard">
+      <div className="hw-stepNumWrapper">
+        <div className="hw-stepNum">{number}</div>
+        <div className="hw-connector" />
       </div>
-
-      <div>
-        <div style={{ fontWeight: 700, color: "var(--text)" }}>{title}</div>
-        <div className="small" style={{ marginTop: 4 }}>
-          {text}
-        </div>
+      <div className="hw-stepContent">
+        <h3 className="hw-stepTitle">{title}</h3>
+        <p className="hw-stepDesc">{description}</p>
       </div>
     </div>
   );
 }
 
-export default function Steps() {
+export default function HowItWorks() {
+  const steps: StepData[] = useMemo(
+    () => [
+      {
+        number: 1,
+        title: "Connect or Upload",
+        description: "Link accounts or upload receipts instantly—however you prefer.",
+      },
+      {
+        number: 2,
+        title: "Haseeb Organizes It",
+        description: "AI + smart rules automatically sort everything into clean categories.",
+      },
+      {
+        number: 3,
+        title: "Ask. Learn. Act.",
+        description: "Chat with Haseeb in everyday language to get clarity on your spending.",
+      },
+    ],
+    []
+  );
+
   return (
-    <section id="product" className="section">
-      <Container>
-        <div className="steps-grid">
-          {/* LEFT */}
-          <div>
-            <h2 className="title">
-              Get Clarity in 3 Easy Steps
+    <section className="section hw-section">
+      {/* The Image is now a background layer. 
+        It sits absolutely behind the content but spans full width.
+      */}
+      <div className="hw-bgLayer">
+        <img
+          src={aminahChat}
+          alt="Haseeb AI chat interface sorting finances"
+          className="hw-fullImage"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="container hw-container-relative">
+        {/* Content sits on top (z-index higher) */}
+        <div className="hw-content">
+          <header className="hw-header">
+            <div className="pill mb-4">How it works</div>
+            <h2 className="title hw-mainTitle">
+              Get clarity in <span className="hw-titleSerif">3 easy steps</span>
             </h2>
-            <p style={{ marginTop: 10 }}>
-              Your spending, sorted and summarized in minutes.
+            <p className="hw-subtitle">
+              Your spending, sorted and summarized in minutes—so you can focus on what matters.
             </p>
+          </header>
 
-            <div style={{ display: "grid", gap: 12, marginTop: 16 }}>
-              <Step
-                n="1"
-                title="Connect or Upload"
-                text="Link accounts or upload receipts — however you want."
-              />
-              <Step
-                n="2"
-                title="Aminah Organizes It"
-                text="AI + smart rules sort everything into clean categories."
-              />
-              <Step
-                n="3"
-                title="Ask. Learn. Act."
-                text="Ask questions in everyday language and make confident decisions."
-              />
-            </div>
-          </div>
-
-          {/* RIGHT (replaces your placeholder) */}
-          <div style={{ display: "grid", placeItems: "center" }}>
-            <IPhoneMockup screen={stepsScreen} alt="Aminah app screen" scale={1} />
+          <div className="hw-stepsList">
+            {steps.map((step) => (
+              <StepItem key={step.number} {...step} />
+            ))}
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
