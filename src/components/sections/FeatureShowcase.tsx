@@ -6,7 +6,7 @@ function FeaturePill({ text }: { text: string }) {
 
 export default function FeatureShowcase() {
   return (
-    <section id="demo" className="section" style={{ paddingTop: 10 }}>
+    <section id="demo" className="section feature-bg" style={{ paddingTop: 30 }}>
       <Container>
         <div
           className="card"
@@ -18,7 +18,7 @@ export default function FeatureShowcase() {
           }}
         >
           <div className="feature-main-grid">
-            <div>
+            <div style={{paddingLeft: 20}}>
               <h2 className="title-xl">
                 Money Awareness <br />
                 That Feels <span style={{ color: "var(--brand)" }}>Good.</span>
@@ -91,13 +91,6 @@ export default function FeatureShowcase() {
               </div>
             </div>
           </div>
-
-          <div style={{ textAlign: "center", marginTop: 26 }}>
-            <div className="title" style={{ fontSize: 22 }}>
-              Feel good about your money.
-            </div>
-            <div className="small">Confidence starts with clarity.</div>
-          </div>
         </div>
 
         <div style={{ textAlign: "center", marginTop: 28 }}>
@@ -110,7 +103,7 @@ export default function FeatureShowcase() {
           </p>
         </div>
 
-        <div className="grid-3" style={{ marginTop: 18 }}>
+        <div className="grid-2x2" style={{ marginTop: 18 }}>
           <div className="card" style={{ padding: 16 }}>
             <FeaturePill text="Pocket-level clarity" />
             <div style={{ marginTop: 10, fontWeight: 750 }}>Know your spending</div>
@@ -125,6 +118,11 @@ export default function FeatureShowcase() {
             <FeaturePill text="Weekly summaries" />
             <div style={{ marginTop: 10, fontWeight: 750 }}>Actionable insights</div>
             <div className="small">Small changes, big wins.</div>
+          </div>
+          <div className="card" style={{ padding: 16 }}>
+            <FeaturePill text="Custom budgets" />
+            <div style={{ marginTop: 10, fontWeight: 750 }}>Set your limits</div>
+            <div className="small">Stay on track with ease.</div>
           </div>
         </div>
       </Container>

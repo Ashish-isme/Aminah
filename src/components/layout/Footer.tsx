@@ -1,24 +1,15 @@
 import Container from "./container";
+import logo from "../../assets/logo.png";
 
 export default function Footer() {
   return (
-    <footer style={{ padding: "54px 0 36px" }}>
+    <footer style={{ padding: "54px 24px 36px" }}>
       <Container>
-        <div className="divider" style={{ marginBottom: 28 }} />
-        <div className="footer-grid">
+        <div className="footer-grid" style={{ marginTop: 5 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <div
-                aria-hidden
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 10,
-                  background: "rgba(47, 90, 85, 0.12)",
-                  border: "1px solid rgba(47, 90, 85, 0.25)",
-                }}
-              />
-              <span style={{ fontWeight: 650 }}>Aminah</span>
+              <img src={logo} alt="Aminah" style={{ width: 28, height: 28, borderRadius: 10 }} />
+              <span style={{ fontWeight: 650, color: "var(--brand)" }}>Aminah</span>
             </div>
             <p style={{ marginTop: 10, maxWidth: 420 }}>
               The personal finance app for Kuwait. Capture, categorize, and understand your everyday spending — automatically.
