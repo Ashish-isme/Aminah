@@ -518,3 +518,203 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
     display: block;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- How It Works Section --- */
+
+.hw-section {
+  background-color: #fff;
+  overflow: visible;
+  padding: 100px 0;
+}
+
+/* Use a section-specific grid (prevents conflicts with global .steps-grid) */
+.hw-gridAlign {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* more room for text */
+  gap: 72px;
+  align-items: start; /* KEY: top-align image with text */
+}
+
+/* Left column */
+.hw-content {
+  padding-top: 6px; /* micro alignment */
+}
+
+/* Typography */
+.hw-header {
+  margin-bottom: 48px;
+  text-align: left;
+}
+
+.hw-mainTitle {
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  font-size: 42px;
+}
+
+.hw-titleSerif {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  color: #2f5a55;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hw-subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 420px;
+}
+
+/* Step Cards */
+.hw-stepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 500px;
+}
+
+.hw-stepCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 32px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hw-stepCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(47, 90, 85, 0.1);
+}
+
+.hw-stepNum {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  background-color: #2f5a55;
+  color: #fff;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.hw-stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hw-stepTitle {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.hw-stepDesc {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Right Side Image Area */
+.hw-imageWrapper {
+  display: flex;
+  justify-content: flex-end; /* align image to right */
+  align-items: flex-start; /* align image to top */
+  position: relative;
+  padding-top: 6px; /* matches left column */
+}
+
+.hw-phoneImage {
+  width: min(520px, 100%); /* bigger + responsive */
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.16));
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .hw-gridAlign {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hw-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .hw-subtitle {
+    margin: 0 auto;
+  }
+
+  .hw-stepsList {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hw-stepCard {
+    text-align: left;
+    padding: 20px;
+  }
+
+  .hw-imageWrapper {
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .hw-phoneImage {
+    width: min(420px, 100%);
+  }
+}
