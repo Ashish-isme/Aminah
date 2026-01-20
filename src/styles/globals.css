@@ -37,7 +37,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/MutipleActicityAminah.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

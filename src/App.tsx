@@ -13,9 +13,10 @@ export default function App() {
       <main>
         <Hero />
         <Pricing />
-        <Testimonials />
+
         <Steps />
         <FeatureShowcase />
+        <Testimonials />
       </main>
       <Footer />
     </>
