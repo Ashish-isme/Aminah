@@ -6,7 +6,7 @@ function FeaturePill({ text }: { text: string }) {
 
 export default function FeatureShowcase() {
   return (
-    <section id="demo" className="section feature-bg" style={{ paddingTop: 30 }}>
+    <section id="demo" className="section feature-bg" style={{ paddingTop: 80 }}>
       <Container>
         <div
           className="card"
@@ -56,7 +56,7 @@ export default function FeatureShowcase() {
                   "radial-gradient(650px 420px at 50% 20%, rgba(47, 90, 85, 0.16), transparent 55%), rgba(255,255,255,0.55)",
               }}
             >
-              <div
+              {/* <div
                 aria-hidden
                 style={{
                   position: "absolute",
@@ -65,7 +65,7 @@ export default function FeatureShowcase() {
                   background: "rgba(255,255,255,0.78)",
                   border: "1px solid rgba(29, 27, 22, 0.12)",
                 }}
-              />
+              /> */}
               <div style={{ position: "absolute", inset: 40 }}>
                 <div className="pill">Aminah Chat</div>
                 <div style={{ marginTop: 14, fontWeight: 800 }}>
@@ -93,7 +93,7 @@ export default function FeatureShowcase() {
           </div>
         </div>
 
-        <div style={{ textAlign: "center", marginTop: 28 }}>
+        <div style={{ textAlign: "center", marginTop: 85 }}>
           <h3 className="title">
             You Don’t Track Money. You Live Well.
           </h3>
