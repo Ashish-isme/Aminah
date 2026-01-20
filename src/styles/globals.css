@@ -2,6 +2,7 @@
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -16,11 +17,10 @@ h1, h2, h3 {
   margin: 0;
   letter-spacing: -0.02em;
 }
+
 p { margin: 0; color: var(--muted); line-height: 1.65; }
 
-.section {
-  padding: 72px 0;
-}
+.section { padding: 72px 0; }
 
 .kicker {
   font-size: 12px;
@@ -50,9 +50,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   align-items: center;
 }
 
-.feature-mockup {
-  height: 420px;
-}
+.feature-mockup { height: 420px; }
 
 .steps-grid {
   display: grid;
@@ -104,9 +102,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   background: rgba(255,255,255,0.55);
   border-color: var(--border);
 }
-.btn-ghost:hover {
-  background: rgba(255,255,255,0.8);
-}
+.btn-ghost:hover { background: rgba(255,255,255,0.8); }
 
 .pill {
   display: inline-flex;
@@ -123,7 +119,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 .card {
   background: var(--surface-2);
   border: 1px solid var(--border);
-  /* border-radius: var(--radius); */
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(8px);
 }
@@ -151,62 +146,40 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-  .title {
-    font-size: 28px;
-  }
-  .title-lg {
-    font-size: 32px;
-  }
-  .title-md {
-    font-size: 24px;
-  }
-  .title-xl {
-    font-size: 32px;
-  }
-  .feature-main-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  h2 {
-    font-size: 24px;
-  }
-  h3 {
-    font-size: 20px;
-  }
-  .section {
-    padding: 36px 0;
-  }
+  .container { padding: 0 16px; }
+
+  .title { font-size: 28px; }
+  .title-lg { font-size: 32px; }
+  .title-md { font-size: 24px; }
+  .title-xl { font-size: 32px; }
+
+  .feature-main-grid { grid-template-columns: 1fr; gap: 24px; }
+  .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+
+  .section { padding: 36px 0; }
+
   .btn {
     height: 40px;
     padding: 0 14px;
     font-size: 14px;
   }
-  header {
-    padding: 12px 0;
-  }
-  header nav {
-    gap: 12px;
-  }
-  .quote {
-    font-size: 24px;
-  }
-  footer {
-    padding: 36px 0 24px;
-  }
+
+  header { padding: 12px 0; }
+  header nav { gap: 12px; }
+
+  .quote { font-size: 24px; }
+
+  footer { padding: 36px 0 24px; }
 }
 
-/* Section with background collage + soft white overlay */
+/* ------------------------------------------------------------------ */
+/* Testimonials (clean + fixed cascade so mobile is ALWAYS 2 cards)     */
+/* ------------------------------------------------------------------ */
+
 .t-section {
   position: relative;
   padding: 70px 0;
@@ -214,42 +187,46 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   overflow: hidden;
 }
 
-/* Daily-task background images (collage feel) */
+/* Background image */
 .t-section::before {
   content: "";
   position: absolute;
   inset: 0;
-
-  /* Replace with your images */
-  background-image:
-    url("../assets/Woman_groceries.jpg"),
-    url("../assets/Hero_Section_Image.png");
-  background-size: cover, cover;
-  background-position: left center, right center;
-  background-repeat: no-repeat, no-repeat;
-
+  background-image: url("../assets/Family_Shopping.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   filter: saturate(0.95) contrast(0.98);
-  opacity: 0.35;
+  opacity: 0.9;
   z-index: 0;
 }
 
-/* Whitish overlay so text/cards pop (not fully opaque) */
+/* Whitish overlay */
 .t-section::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.75),
-    rgba(255, 255, 255, 0.65)
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.30)
   );
   z-index: 1;
 }
+
 
 /* Keep content above overlays */
 .t-section > * {
   position: relative;
   z-index: 2;
+}
+
+.t-viewport {
+  touch-action: pan-y; /* allows vertical scroll, we handle horizontal swipe */
+}
+
+.t-card:active {
+  transform: scale(0.99);
 }
 
 /* Header */
@@ -258,9 +235,8 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   margin-bottom: 34px;
 }
 
-.t-title {
-  color: var(--text);
-}
+.t-title { color: var(--text); }
+.t-highlight { color: var(--brand); }
 
 .t-subtitle {
   margin-top: 10px;
@@ -270,7 +246,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 /* Carousel shell */
 .t-shell {
   position: relative;
-  max-width: 980px; /* wider to fit 3 cards nicely */
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -292,7 +268,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   box-sizing: border-box;
 }
 
-/* 3 cards per slide */
+/* Grid: desktop defaults to 3 */
 .t-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -300,12 +276,12 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   align-items: stretch;
 }
 
-/* Card styling similar to reference */
+/* Card */
 .t-card {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: none; /* remove drop shadow */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -336,7 +312,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   display: block;
 }
 
-/* Quote mark (top-left inside card like the reference) */
+/* Quote mark */
 .t-quoteMark {
   position: absolute;
   left: 16px;
@@ -356,9 +332,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 }
 
 /* Name/role */
-.t-person {
-  margin-top: auto;
-}
+.t-person { margin-top: auto; }
 
 .t-name {
   font-weight: 700;
@@ -389,17 +363,10 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   z-index: 3;
 }
 
-.t-arrowLeft {
-  left: -12px;
-}
+.t-arrowLeft { left: -56px; }
+.t-arrowRight { right: -56px; }
 
-.t-arrowRight {
-  right: -12px;
-}
-
-.t-arrow:hover {
-  transform: translateY(-50%) scale(1.03);
-}
+.t-arrow:hover { transform: translateY(-50%) scale(1.03); }
 
 .t-arrow:focus-visible {
   outline: 3px solid rgba(0, 0, 0, 0.16);
@@ -429,26 +396,37 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   transform: scale(1.2);
 }
 
-/* Responsive: 2 cards on tablet, 1 on mobile */
+/* Tablet: 2 columns */
 @media (max-width: 900px) {
   .t-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .t-arrowLeft {
-    left: 8px;
-  }
-  .t-arrowRight {
-    right: 8px;
-  }
+  /* keep arrows inside on smaller screens */
+  .t-arrowLeft { left: 8px; }
+  .t-arrowRight { right: 8px; }
 }
 
+/* Mobile: swap bg + force 2 columns + hide arrows */
 @media (max-width: 600px) {
-  .t-grid {
-    grid-template-columns: 1fr;
+  .t-section::before {
+    background-image: url("../assets/MobileView_familyShopping.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+
+  /* FORCE 2 cards always on mobile */
+  .t-section .t-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;
+  }
+
+  .t-arrow { display: none; }
+  .t-shell { padding: 0; }
 }
 
+/* -------------------- Nav / Mobile Menu -------------------- */
 .nav-desktop {
   display: flex;
   align-items: center;
