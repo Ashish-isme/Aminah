@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap");
 @import "./tokens.css";
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+
+html {
+  background: #ffffff;
+  color: var(--text);
+  color-scheme: light;
+}
 
 body {
   margin: 0;
@@ -52,6 +59,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
 
 .feature-mockup { height: 420px; }
 
+/* KEEP your original .steps-grid for other sections */
 .steps-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -214,8 +222,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   z-index: 1;
 }
 
-
-/* Keep content above overlays */
 .t-section > * {
   position: relative;
   z-index: 2;
@@ -276,7 +282,7 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   align-items: stretch;
 }
 
-/* Card */
+/* Card styling */
 .t-card {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.78);
@@ -293,7 +299,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   height: 100%;
 }
 
-/* Avatar */
 .t-avatarWrap {
   width: 58px;
   height: 58px;
@@ -312,7 +317,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   display: block;
 }
 
-/* Quote mark */
 .t-quoteMark {
   position: absolute;
   left: 16px;
@@ -323,7 +327,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
 }
 
-/* Quote */
 .t-quote {
   margin: 8px 0 16px;
   color: var(--text);
@@ -331,8 +334,9 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   line-height: 1.6;
 }
 
-/* Name/role */
-.t-person { margin-top: auto; }
+.t-person {
+  margin-top: auto;
+}
 
 .t-name {
   font-weight: 700;
@@ -346,7 +350,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   font-size: 12px;
 }
 
-/* Arrows */
 .t-arrow {
   position: absolute;
   top: 50%;
@@ -373,7 +376,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   outline-offset: 3px;
 }
 
-/* Dots */
 .t-dots {
   display: flex;
   justify-content: center;
@@ -396,7 +398,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   transform: scale(1.2);
 }
 
-/* Tablet: 2 columns */
 @media (max-width: 900px) {
   .t-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -496,203 +497,238 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
     display: block;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- How It Works Section --- */
+/* ------------------------------ */
+/* --- How It Works Section ---   */
+/* ------------------------------ */
 
 .hw-section {
-  background-color: #fff;
-  overflow: visible;
+  position: relative;
+  background: #ffffff;
+  /* Ensure section has enough height to show the image nicely */
+  min-height: 700px; 
   padding: 100px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Use a section-specific grid (prevents conflicts with global .steps-grid) */
-.hw-gridAlign {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* more room for text */
-  gap: 72px;
-  align-items: start; /* KEY: top-align image with text */
+/* THE BACKGROUND LAYER 
+   This handles the "Full width, text overlap" requirement.
+*/
+.hw-bgLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Sits behind text */
+  pointer-events: none; /* Allows clicking text even if image overlaps */
 }
 
-/* Left column */
+.hw-fullImage {
+  width: 100%;
+  height: 100%;
+  
+  /* CRITICAL: 
+     'cover' ensures full width/height fill.
+     'right center' ensures the PHONE is never cut off. 
+     The left side (blurred store) will crop automatically based on screen size, 
+     which is fine because the text covers it.
+  */
+  object-fit: cover;
+  object-position: right center; 
+  display: block;
+  
+  /* Optional: Fade in effect */
+  opacity: 1; 
+}
+
+/* THE CONTENT LAYER
+*/
+.hw-container-relative {
+  position: relative;
+  z-index: 2; /* Sits ON TOP of the image */
+  width: 100%;
+}
+
 .hw-content {
-  padding-top: 6px; /* micro alignment */
+  /* Limit text to the left half so it overlaps the blurred part of the image 
+     but doesn't cover the phone on the right. */
+  max-width: 50%; 
+  display: flex;
+  flex-direction: column;
 }
 
-/* Typography */
+/* Typography & Steps (Same as before) */
 .hw-header {
-  margin-bottom: 48px;
+  margin-bottom: 56px;
   text-align: left;
 }
 
+.mb-4 { margin-bottom: 16px; }
+
 .hw-mainTitle {
-  margin-bottom: 16px;
-  color: #1a1a1a;
-  font-size: 42px;
+  margin-bottom: 20px;
+  color: var(--text);
+  font-size: 44px;
+  line-height: 1.15;
 }
 
 .hw-titleSerif {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  color: #2f5a55;
+  font-family: "Playfair Display", serif;
+  color: var(--brand);
   font-style: italic;
   font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+.hw-titleSerif::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(47, 90, 85, 0.1);
+  z-index: -1;
+  transform: skew(-12deg);
 }
 
 .hw-subtitle {
   font-size: 18px;
-  color: #666;
-  max-width: 420px;
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.7;
 }
 
 /* Step Cards */
 .hw-stepsList {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 500px;
+  gap: 12px;
 }
 
 .hw-stepCard {
   display: flex;
   align-items: flex-start;
   gap: 24px;
-  padding: 24px 32px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #f0f0f0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 24px;
+  border-radius: 16px;
+  /* Add a slight background blur to ensure text readability over the image */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
 .hw-stepCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-color: rgba(47, 90, 85, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03);
+  transform: translateX(10px);
+}
+
+/* Number Column */
+.hw-stepNumWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
 }
 
 .hw-stepNum {
   flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  background-color: #2f5a55;
-  color: #fff;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border: 2px solid var(--border);
+  color: var(--text);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
   font-size: 18px;
-  margin-top: 2px;
+  transition: 0.3s ease;
+  z-index: 2;
 }
 
-.hw-stepContent {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.hw-stepCard:hover .hw-stepNum {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: white;
+  box-shadow: 0 4px 12px rgba(47, 90, 85, 0.3);
 }
 
-.hw-stepTitle {
-  font-size: 19px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 4px;
+.hw-connector {
+  width: 2px;
+  flex-grow: 1;
+  background: var(--border);
+  opacity: 0.4;
+  min-height: 20px;
 }
 
-.hw-stepDesc {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.5;
+.hw-stepCard:last-child .hw-connector { display: none; }
+
+.hw-stepContent { padding-top: 8px; }
+.hw-stepTitle { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.hw-stepDesc { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+/* -------------------- */
+/* --- RESPONSIVE ---   */
+/* -------------------- */
+
+@media (max-width: 960px) {
+  .hw-section {
+    padding: 60px 0;
+    min-height: auto;
+    /* On tablet/mobile, we might want to stack them if the text is hard to read */
+    flex-direction: column;
+  }
+  
+  .hw-content {
+    max-width: 65%; /* Give text a bit more room on tablet */
+  }
 }
 
-/* Right Side Image Area */
-.hw-imageWrapper {
-  display: flex;
-  justify-content: flex-end; /* align image to right */
-  align-items: flex-start; /* align image to top */
-  position: relative;
-  padding-top: 6px; /* matches left column */
-}
-
-.hw-phoneImage {
-  width: min(520px, 100%); /* bigger + responsive */
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.16));
-}
-
-/* Mobile */
-@media (max-width: 900px) {
-  .hw-gridAlign {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+@media (max-width: 768px) {
+  .hw-section {
+    /* Reset layout for mobile to stack normally */
+    display: block;
+    padding: 0 0 60px 0;
   }
 
-  .hw-header {
-    text-align: center;
-    margin-bottom: 32px;
+  /* On mobile, the "left-to-right" image concept doesn't work well 
+     because the screen is vertical. We move the image to the top 
+     so the phone is visible, then text below.
+  */
+  .hw-bgLayer {
+    position: relative;
+    height: 400px; /* Visible height of image on mobile */
+    margin-bottom: -50px; /* Pull text up slightly */
   }
 
-  .hw-subtitle {
-    margin: 0 auto;
+  .hw-fullImage {
+    object-position: center bottom; /* Focus on the phone part */
   }
 
-  .hw-stepsList {
-    margin: 0 auto;
-    width: 100%;
+  .hw-content {
+    max-width: 100%;
+    padding: 24px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100px);
   }
 
+  .hw-header { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
   .hw-stepCard {
-    text-align: left;
-    padding: 20px;
+    background: #fff; /* Solid background on mobile for readability */
   }
-
-  .hw-imageWrapper {
-    justify-content: center;
-    padding-top: 0;
-  }
-
-  .hw-phoneImage {
-    width: min(420px, 100%);
-  }
+  
+  .hw-connector { display: none; }
 }
