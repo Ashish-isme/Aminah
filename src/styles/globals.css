@@ -497,31 +497,69 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
     display: block;
   }
 }
-
 /* ------------------------------ */
 /* --- How It Works Section ---   */
 /* ------------------------------ */
 
 .hw-section {
-  background: linear-gradient(180deg, #ffffff 0%, #F3F5F4 100%); /* Softer fade */
-  overflow: hidden; /* Prevents blob overflow */
-  padding: 110px 0;
+  position: relative;
+  background: #ffffff;
+  /* Ensure section has enough height to show the image nicely */
+  min-height: 700px; 
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Section-specific grid */
-.hw-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center; /* Vertically center the text against the phone */
+/* THE BACKGROUND LAYER 
+   This handles the "Full width, text overlap" requirement.
+*/
+.hw-bgLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Sits behind text */
+  pointer-events: none; /* Allows clicking text even if image overlaps */
 }
 
-/* Left column */
+.hw-fullImage {
+  width: 100%;
+  height: 100%;
+  
+  /* CRITICAL: 
+     'cover' ensures full width/height fill.
+     'right center' ensures the PHONE is never cut off. 
+     The left side (blurred store) will crop automatically based on screen size, 
+     which is fine because the text covers it.
+  */
+  object-fit: cover;
+  object-position: right center; 
+  display: block;
+  
+  /* Optional: Fade in effect */
+  opacity: 1; 
+}
+
+/* THE CONTENT LAYER
+*/
+.hw-container-relative {
+  position: relative;
+  z-index: 2; /* Sits ON TOP of the image */
+  width: 100%;
+}
+
 .hw-content {
-  padding-bottom: 20px;
+  /* Limit text to the left half so it overlaps the blurred part of the image 
+     but doesn't cover the phone on the right. */
+  max-width: 50%; 
+  display: flex;
+  flex-direction: column;
 }
 
-/* Typography */
+/* Typography & Steps (Same as before) */
 .hw-header {
   margin-bottom: 56px;
   text-align: left;
@@ -545,7 +583,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   display: inline-block;
 }
 
-/* Underline effect for the serif text */
 .hw-titleSerif::after {
   content: "";
   position: absolute;
@@ -565,11 +602,11 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   line-height: 1.7;
 }
 
-/* Step Cards & List */
+/* Step Cards */
 .hw-stepsList {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Tighter gap, let padding handle spacing */
+  gap: 12px;
 }
 
 .hw-stepCard {
@@ -578,17 +615,17 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   gap: 24px;
   padding: 24px;
   border-radius: 16px;
-  background: transparent;
-  border: 1px solid transparent;
+  /* Add a slight background blur to ensure text readability over the image */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
-  position: relative;
 }
 
-/* Hover Effect: "Light up" the step */
 .hw-stepCard:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   border-color: rgba(0, 0, 0, 0.04);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03);
   transform: translateX(10px);
 }
 
@@ -617,7 +654,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   z-index: 2;
 }
 
-/* Active/Hover state for number */
 .hw-stepCard:hover .hw-stepNum {
   background-color: var(--brand);
   border-color: var(--brand);
@@ -625,7 +661,6 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   box-shadow: 0 4px 12px rgba(47, 90, 85, 0.3);
 }
 
-/* Visual Connector Line */
 .hw-connector {
   width: 2px;
   flex-grow: 1;
@@ -634,120 +669,66 @@ p { margin: 0; color: var(--muted); line-height: 1.65; }
   min-height: 20px;
 }
 
-.hw-stepCard:last-child .hw-connector {
-  display: none;
-}
+.hw-stepCard:last-child .hw-connector { display: none; }
 
-.hw-stepContent {
-  padding-top: 8px;
-}
+.hw-stepContent { padding-top: 8px; }
+.hw-stepTitle { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.hw-stepDesc { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
-.hw-stepTitle {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 8px;
-}
+/* -------------------- */
+/* --- RESPONSIVE ---   */
+/* -------------------- */
 
-.hw-stepDesc {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.hw-imageWrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1000px; 
-}
-
-.hw-blob {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background: var(--brand);
-  opacity: 0.08;
-  filter: blur(60px);
-  border-radius: 50%;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.hw-phoneImage {
-  position: relative;
-  z-index: 1;
-  width: min(480px, 100%);
-  height: auto;
-  display: block;
-  
-  border-radius: 32px; 
-  
-  border: 8px solid #ffffff; 
-  
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
-}
-
-.hw-imageWrapper:hover .hw-phoneImage {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 15px 20px -10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 600px) {
-  .hw-phoneImage {
-    border-radius: 24px;
-    border-width: 5px;  
-  }
-}
-
-/* Mobile Responsiveness */
 @media (max-width: 960px) {
-  .hw-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
-  }
-
-  .hw-header {
-    text-align: center;
-    margin-bottom: 40px;
-    display: flex;
+  .hw-section {
+    padding: 60px 0;
+    min-height: auto;
+    /* On tablet/mobile, we might want to stack them if the text is hard to read */
     flex-direction: column;
-    align-items: center;
   }
   
-  .hw-titleSerif::after { left: 50%; transform: translateX(-50%) skew(-12deg); width: 110%; }
+  .hw-content {
+    max-width: 65%; /* Give text a bit more room on tablet */
+  }
+}
 
-  /* Re-align cards for mobile */
-  .hw-stepsList {
-    align-items: center;
+@media (max-width: 768px) {
+  .hw-section {
+    /* Reset layout for mobile to stack normally */
+    display: block;
+    padding: 0 0 60px 0;
+  }
+
+  /* On mobile, the "left-to-right" image concept doesn't work well 
+     because the screen is vertical. We move the image to the top 
+     so the phone is visible, then text below.
+  */
+  .hw-bgLayer {
+    position: relative;
+    height: 400px; /* Visible height of image on mobile */
+    margin-bottom: -50px; /* Pull text up slightly */
+  }
+
+  .hw-fullImage {
+    object-position: center bottom; /* Focus on the phone part */
+  }
+
+  .hw-content {
+    max-width: 100%;
+    padding: 24px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100px);
+  }
+
+  .hw-header { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
   }
   
   .hw-stepCard {
-    text-align: left;
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .hw-stepCard:hover {
-    transform: translateY(-5px);
+    background: #fff; /* Solid background on mobile for readability */
   }
   
   .hw-connector { display: none; }
-}
-
-@media (max-width: 600px) {
-  .hw-mainTitle { font-size: 32px; }
-  .hw-phoneImage { width: 90%; }
-  .hw-stepCard { padding: 16px; gap: 16px; }
-  .hw-stepNum { width: 40px; height: 40px; font-size: 16px; }
 }
