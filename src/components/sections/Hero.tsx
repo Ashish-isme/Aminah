@@ -21,7 +21,7 @@ export default function Hero() {
           padding: "64px 24px",
           width: "100%",
           height: "100%",
-          backgroundImage: "url('/src/assets/Hero_Section_Image.png')",
+          backgroundImage: "url('src\assets\Hero_Section_Image.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           border: "1px solid rgba(0,0,0,0.08)",

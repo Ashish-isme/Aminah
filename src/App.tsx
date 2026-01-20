@@ -13,7 +13,6 @@ export default function App() {
       <main>
         <Hero />
         <Pricing />
-
         <Steps />
         <FeatureShowcase />
         <Testimonials />
